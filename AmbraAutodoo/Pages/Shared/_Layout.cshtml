@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Auto Ambra</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .navbar-nav .nav-link {
+            color: #555; /* Adjust this color of links */
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #000; /* Adjust this color of hovering */
+            }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .navbar {
+            justify-content: space-between;
+        }
+
+        .background-image-Pocetna {
+            position: relative;
+            background-image: url('@Url.Content("~/Slike/Background.jpg")'); /* Use Url.Content for the image path */
+            background-size: cover; /* Ensures the image covers the entire container */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents repeating the image */
+            height: 100%; /* Adjust height as needed */
+            width: 100%; /* Full width */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .title-style{
+            text-align: center;
+        }
+
+        .padding-render{
+            background-color: whitesmoke;
+        }
+
+        .container-fix {
+            width: 70%;
+            margin-right: 15%;
+            margin-left: 15%;
+        }
+
+    </style>
+</head>
+<body class="background-image-Pocetna">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style=" margin-bottom:20px">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Index">Početna</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Usluge">Usluge</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/ONama">O nama</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Kontakt">Kontakt</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Oprema">Oprema</a>
+                </li>
+            </ul>
+        </div>
+        <a class="navbar-brand" href="/">Ambra d.o.o.</a>
+    </nav>
+
+    <div class="container-fix padding-render">
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        //Bootstrap's JavaScript components for navbar
+        $(document).ready(function () {
+            $('.navbar-toggler').on('click', function () {
+                $('.navbar-collapse').collapse('toggle');
+            });
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

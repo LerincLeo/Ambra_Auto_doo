@@ -1,0 +1,185 @@
+﻿@page
+@model OpremaModel
+@{
+    ViewData["Title"] = "Oprema";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Narudžba opreme</h1>
+    <h2 class="mb-4">Upute za preuzimanje robe</h2>
+    <p>Želimo Vas obavijestiti o mogućnostima preuzimanja robe i načinu plaćanja:</p>
+    <ul>
+        <li><strong>Preuzimanje u radnji:</strong> Roba se može preuzeti direktno u našoj radnji.</li>
+        <li><strong>Dostava na kućnu adresu:</strong> Ako želite da robu dostavimo na Vašu kućnu adresu, možemo Vam omogućiti ovu opciju uz dodatnu poštarinu. Plaćanje se vrši pri preuzimanju robe.</li>
+    </ul>
+    <p><strong>Napomena:</strong> Cijena poštarine ovisi o udaljenosti i težine paketa. Mi ćemo Vas kontaktirati za točne informacije o troškovima dostave.</p>
+
+    <h2 class="mb-4">Brisači</h2>
+    <div class="row">
+        @foreach (var item in Model.Brisaci)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <img src="@item.ImagePath" class="card-img-top" alt="@item.Name">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@item.Name</h5>
+                        <button type="button" class="btn btn-primary" onclick="openForm('@item.Name', '@Html.Raw(item.Price)')">Naruči</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <h2 class="mb-4">Amortizeri</h2>
+    <div class="row">
+        @foreach (var item in Model.Amortizeri)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <img src="@item.ImagePath" class="card-img-top" alt="@item.Name">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@item.Name</h5>
+                        <button type="button" class="btn btn-primary" onclick="openForm('@item.Name', '@Html.Raw(item.Price)')">Naruči</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Popup Form -->
+<div id="popupForm" class="popup-form">
+    <div class="popup-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+        <h2>Naruči</h2>
+        <form method="post">
+            <div class="form-group d-flex align-items-center mb-3">
+                <label for="itemName" class="mr-2">Naziv artikla:</label>
+                <input type="text" id="itemName" name="ItemName" class="form-control" style="flex: 75%; margin-right: 5%;" readonly />
+                <label for="itemPrice" class="ml-2">Cijena:</label>
+                <input type="text" id="itemPrice" name="ItemPrice" class="form-control" style="flex: 25%;" readonly />
+            </div>
+            <div class="form-group mb-3">
+                <label for="quantity">Količina:</label>
+                <input type="number" id="quantity" name="Quantity" class="form-control" min="1" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="phoneNumber">Broj telefona:</label>
+                <input type="tel" id="phoneNumber" name="PhoneNumber" class="form-control" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="address">Adresa i kućanski broj:</label>
+                <input type="text" id="address" name="Address" class="form-control" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="town">Grad:</label>
+                <input type="text" id="town" name="Town" class="form-control" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="postalCode">Poštanski broj:</label>
+                <input type="text" id="postalCode" name="PostalCode" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Pošalji</button>
+            <button type="button" class="btn btn-secondary" onclick="closeForm()">Zatvori</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function openForm(itemName, itemPrice) {
+            document.getElementById('itemName').value = itemName;
+            document.getElementById('itemPrice').value = itemPrice;
+            document.getElementById('popupForm').style.display = 'flex';
+        }
+
+        function closeForm() {
+            document.getElementById('popupForm').style.display = 'none';
+        }
+    </script>
+}
+
+<style>
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    .card-img-top {
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .popup-form {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .popup-content {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+        .popup-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .form-group.d-flex {
+        display: flex;
+        align-items: center;
+    }
+
+    .form-group .form-control {
+        margin: 0;
+        padding: 0.5rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004b8d;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+</style>

@@ -1,0 +1,79 @@
+﻿@page
+@model ONamaModel
+@{
+    ViewData["Title"] = "O nama";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Više o auto servisu Ambra d.o.o.</h1>
+    <p class="mb-5">
+        Poduzeće SERVIS AMBRA d.o.o. osnovano je 2004. godine sa sjedištem u Osijeku, kao logičan nastavak i proširenje djelatnosti poduzeća osnovanog 1989. godine. Kontinuiranim praćenjem potreba tržišta, širili smo našu ponudu kako bismo obuhvatili razne usluge u automobilskoj industriji.
+    </p>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6 mb-4 mb-md-0">
+            <img src="@Url.Content("~/Slike/AmbraTrgovina.jpg")" alt="Auto Servis Ambra" class="img-fluid rounded">
+        </div>
+        <div class="col-md-6">
+            <h2>Naše djelatnosti:</h2>
+            <ul class="list-unstyled">
+                <li>
+                    <h4>Autoservis Auto Ambra</h4>
+                    <p>Osnovna djelatnost našeg poduzeća obuhvaća prodaju i servisiranje vozila, uključujući specijalizirani servis za vozila Lada Niva.</p>
+                </li>
+                <li>
+                    <h4>Ovlašteni servis za plinske instalacije</h4>
+                    <p>Postali smo ovlašteni servis za ugradnju i servisiranje plinskih instalacija, čime osiguravamo sigurnost i pouzdanost vaših vozila.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <p>
+        Kroz godine, naš tim stručnjaka kontinuirano prati najnovije tehnologije i trendove u automobilskoj industriji, kako bismo uvijek mogli ponuditi najbolju uslugu našim klijentima.
+    </p>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h1, h2, h4 {
+        color: #0056b3;
+    }
+
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .rounded {
+        border-radius: 8px;
+    }
+
+    .list-unstyled {
+        padding-left: 0;
+        list-style: none;
+    }
+
+        .list-unstyled li {
+            margin-bottom: 20px;
+        }
+
+        .list-unstyled h4 {
+            margin-bottom: 10px;
+        }
+
+    p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+</style>

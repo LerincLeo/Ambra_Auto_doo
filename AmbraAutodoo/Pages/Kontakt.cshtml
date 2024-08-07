@@ -1,0 +1,114 @@
+﻿@page
+@model KontaktModel
+@{
+    ViewData["Title"] = "Kontakt";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Kontaktirajte nas!</h1>
+
+    <p class="text-center mb-4">
+        Ako imate pitanja vezanih uz našu djelatnost ili ste zainteresirani za neku od naših usluga,
+        slobodno nas kontaktirajte ili nas možete pronaći na adresi.
+    </p>
+
+    <!-- Google Maps Embed -->
+    <div class="map-container mb-4">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2793.315283790456!2d18.633318676634104!3d45.564098026767304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475ce7257d27e737%3A0x56ae23c7c0aae701!2sSvilajska%20ul.%205%2C%2031000%2C%20Osijek!5e0!3m2!1shr!2shr!4v1722546424115!5m2!1shr!2shr" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <!-- Message Above Form -->
+            <h2>Pošaljite nam upit:</h2>
+            <div class="alert alert-info">
+                Nastojat ćemo Vam što prije odgovoriti! Molimo Vas ispunite sva <span class="text-danger">*</span> obvezna polja.
+            </div>
+            <!-- Contact Form -->
+            <form method="post">
+                <div class="form-group">
+                    <label for="name">Ime i prezime <span class="text-danger">*</span>:</label>
+                    <input type="text" id="name" name="Name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail <span class="text-danger">*</span>:</label>
+                    <input type="email" id="email" name="Email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefon:</label>
+                    <input type="tel" id="phone" name="Phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Poruka <span class="text-danger">*</span>:</label>
+                    <textarea id="message" name="Message" class="form-control" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Pošalji</button>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <!-- Contact Information -->
+            <h2>Više informacija</h2>
+            <address>
+                <p>
+                    <strong>Naša adresa:</strong><br>
+                    Svilajska 5,<br>
+                    31000 Osijek
+                </p>
+                <p>
+                    <strong>Kontakt:</strong><br>
+                    Telefon: 031 / 367-070<br>
+                    Fax: 031 / 368-822<br>
+                    Mob: 098 / 281 055<br>
+                    Email: <a href="mailto:ambra@os.t-com.hr">ambra@os.t-com.hr</a>
+                </p>
+            </address>
+        </div>
+    </div>
+</div>
+
+<style>
+    .map-container {
+        position: relative;
+        overflow: hidden;
+        padding-top: 26.25%; /* aspect ratio */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .mb-4 {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+        border-radius: 0.375rem;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+    address {
+        font-style: normal;
+    }
+</style>
